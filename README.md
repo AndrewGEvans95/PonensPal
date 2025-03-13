@@ -6,6 +6,7 @@ Intention of this is not to produce another logic tool.  I think plenty of these
 
 This project serves as a starting point for exploring more rigorous automated reasoning systems and formal specification languages. In future experiments, I plan to integrate tools such as Lean, Coq, Isabelle, and formal specification languages like TLA+ and Alloy, to investigate whether increased logical rigor can further enhance LLM accuracy, reliability, and interpretability.
 
+Algorithms / Concepts Used: [Forward Chaining for Modus Ponens](https://en.wikipedia.org/wiki/Forward_chaining)
 
 Note: Initially I set out to write a simple REPL interpreter capable of parsing basic matrices and vector notation and do some funky linear algebra stuff. However, I got distracted.  
 
