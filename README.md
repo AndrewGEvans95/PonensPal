@@ -106,7 +106,7 @@ python your_script_name.py
 - Run the script:
 
 ```bash
-python your_script_name.py
+python3 ModusPonensProver.py
 ```
 
 - Review the step-by-step logic proof directly in the terminal.
