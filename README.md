@@ -8,7 +8,7 @@ This project serves as a starting point for exploring more rigorous automated re
 
 Algorithms / Concepts Used: [Forward Chaining for Modus Ponens](https://en.wikipedia.org/wiki/Forward_chaining)
 
-Note: Initially I set out to write a simple REPL interpreter capable of parsing basic matrices and vector notation and do some funky linear algebra stuff. However, I got distracted.  
+Note: Initially I set out to write a simple REPL interpreter capable of parsing basic matrices and vector notation and do some funky linear algebra stuff; however, I got distracted.  
 
 Addtional notes: Create an llm from scratch where entire training set is missing one letter.  E maybe?  What would happen, would it still be able to "understand" lanuage?  IDK another rabbit hole.
 
