@@ -94,9 +94,9 @@ python your_script_name.py
 
 ### Main Pipeline
 
-- **Natural argument ➡ Formal logic** (ChatGPT)
-- **Formal logic ➡ Proof** (Local prover)
-- **Proof ➡ Natural language explanation** (optional) wip
+- **Natural argument -> Formal logic** (ChatGPT)
+- **Formal logic -> Proof** (Local prover)
+- **Proof -> Natural language explanation** (optional) wip
 
 ---
 
