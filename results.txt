@@ -1,0 +1,1147 @@
+
+======== Processing Valid Examples ========
+
+---------------------
+Example 1:
+Natural Language Argument:
+If Andrew is a resident of Durham, NC, then Andrew enjoys the vibrant local culture.
+Andrew is a resident of Durham, NC.
+Therefore, Andrew enjoys the vibrant local culture.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: Andrew is a resident of Durham, NC
+q: Andrew enjoys the vibrant local culture
+
+Premises:
+1. p -> q
+2. p
+
+Goal: q
+
+Argument:
+1. p -> q (Given)
+2. p (Given)
+3. p (2)
+4. q (Modus Ponens: 3, 1)
+
+Parsed Mapping:
+p: Andrew is a resident of Durham, NC
+q: Andrew enjoys the vibrant local culture
+
+Parsed Premises:
+p -> q
+p
+Parsed Goal:
+q
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'q' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+
+---------------------
+Example 2:
+Natural Language Argument:
+If it is raining in Durham, then the streets become wet.
+If the streets become wet, then the roads are slippery.
+It is raining in Durham.
+Therefore, the roads are slippery.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: It is raining in Durham
+q: The streets become wet
+r: The roads are slippery
+
+Premises:
+1. p -> q
+2. q -> r
+3. p
+
+Goal: r
+
+Argument:
+1. p -> q (Premise)
+2. q -> r (Premise)
+3. p (Premise)
+4. p (3, Reiteration)
+5. q (1,4, Modus Ponens)
+6. r (2,5, Modus Ponens)
+
+Parsed Mapping:
+p: It is raining in Durham
+q: The streets become wet
+r: The roads are slippery
+
+Parsed Premises:
+p -> q
+q -> r
+p
+Parsed Goal:
+r
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'r' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+From 'From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.' and the implication 'q -> r', by modus ponens we deduce 'r'.
+
+---------------------
+Example 3:
+Natural Language Argument:
+If a student studies diligently, then they pass their exams.
+If a student passes their exams, then they graduate.
+Andrew studies diligently.
+Therefore, Andrew graduates.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: a student studies diligently
+q: a student passes their exams
+r: Andrew graduates
+
+Premises:
+1. p -> q
+2. q -> r
+3. p
+
+Goal: r
+
+Argument:
+1. p -> q (Given)
+2. q -> r (Given)
+3. p (Given)
+4. p (3, Reiteration)
+5. q (1,4, Modus Ponens)
+6. r (2,5, Modus Ponens)
+
+Parsed Mapping:
+p: a student studies diligently
+q: a student passes their exams
+r: Andrew graduates
+
+Parsed Premises:
+p -> q
+q -> r
+p
+Parsed Goal:
+r
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'r' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+From 'From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.' and the implication 'q -> r', by modus ponens we deduce 'r'.
+
+---------------------
+Example 4:
+Natural Language Argument:
+If a person exercises regularly, then they maintain good health.
+If a person maintains good health, then they have more energy.
+Andrew exercises regularly.
+Therefore, Andrew has more energy.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: a person exercises regularly
+q: a person maintains good health
+r: a person has more energy
+
+Premises:
+1. p -> q
+2. q -> r
+3. p
+
+Goal: r
+
+Argument:
+1. p -> q (Premise)
+2. q -> r (Premise)
+3. p (Premise)
+4. p (3, Reiteration)
+5. q (1,4, Modus Ponens)
+6. r (2,5, Modus Ponens)
+
+Parsed Mapping:
+p: a person exercises regularly
+q: a person maintains good health
+r: a person has more energy
+
+Parsed Premises:
+p -> q
+q -> r
+p
+Parsed Goal:
+r
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'r' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+From 'From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.' and the implication 'q -> r', by modus ponens we deduce 'r'.
+
+---------------------
+Example 5:
+Natural Language Argument:
+If a construction crane is well-maintained, then it operates efficiently.
+If a construction crane operates efficiently, then construction projects run smoothly.
+A construction crane is well-maintained.
+Therefore, construction projects run smoothly.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: a construction crane is well-maintained
+q: a construction crane operates efficiently
+r: construction projects run smoothly
+
+Premises:
+1. p -> q
+2. q -> r
+3. p
+
+Goal: r
+
+Argument:
+1. p -> q (Premise)
+2. q -> r (Premise)
+3. p (Premise)
+4. p (Reiteration, 3)
+5. q (Modus Ponens, 1, 4)
+6. r (Modus Ponens, 2, 5)
+
+Parsed Mapping:
+p: a construction crane is well-maintained
+q: a construction crane operates efficiently
+r: construction projects run smoothly
+
+Parsed Premises:
+p -> q
+q -> r
+p
+Parsed Goal:
+r
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'r' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+From 'From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.' and the implication 'q -> r', by modus ponens we deduce 'r'.
+
+---------------------
+Example 6:
+Natural Language Argument:
+If Andrew and his friend Alex K. work together on a project, then the project benefits from their combined expertise.
+If the project benefits from their combined expertise, then it is successful.
+Andrew and Alex K. work together on a project.
+Therefore, the project is successful.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: Andrew and Alex K. work together on a project
+q: The project benefits from their combined expertise
+r: The project is successful
+
+Premises:
+1. p -> q
+2. q -> r
+3. p
+
+Goal: r
+
+Argument:
+1. p -> q (Given)
+2. q -> r (Given)
+3. p (Given)
+4. q (Modus Ponens with 1 and 3)
+5. r (Modus Ponens with 2 and 4)
+
+Parsed Mapping:
+p: Andrew and Alex K. work together on a project
+q: The project benefits from their combined expertise
+r: The project is successful
+
+Parsed Premises:
+p -> q
+q -> r
+p
+Parsed Goal:
+r
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'r' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+From 'From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.' and the implication 'q -> r', by modus ponens we deduce 'r'.
+
+---------------------
+Example 7:
+Natural Language Argument:
+If Durham invests in innovative construction technologies, then the local construction industry advances.
+If the local construction industry advances, then job opportunities increase.
+Durham invests in innovative construction technologies.
+Therefore, job opportunities increase.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: Durham invests in innovative construction technologies
+q: The local construction industry advances
+r: Job opportunities increase
+
+Premises:
+1. p -> q
+2. q -> r
+3. p
+
+Goal: r
+
+Argument:
+1. p -> q (Premise)
+2. q -> r (Premise)
+3. p (Premise)
+4. p (3, Reiteration)
+5. q (1,4, Modus Ponens)
+6. r (2,5, Modus Ponens)
+
+Parsed Mapping:
+p: Durham invests in innovative construction technologies
+q: The local construction industry advances
+r: Job opportunities increase
+
+Parsed Premises:
+p -> q
+q -> r
+p
+Parsed Goal:
+r
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'r' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+From 'From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.' and the implication 'q -> r', by modus ponens we deduce 'r'.
+
+---------------------
+Example 8:
+Natural Language Argument:
+If Andrew writes a popular blog about construction cranes, then he gains recognition among crane enthusiasts.
+If he gains recognition, then he secures new business opportunities.
+Andrew writes a popular blog about construction cranes.
+Therefore, he secures new business opportunities.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: Andrew writes a popular blog about construction cranes
+q: Andrew gains recognition among crane enthusiasts
+r: Andrew secures new business opportunities
+
+Premises:
+1. p -> q
+2. q -> r
+3. p
+
+Goal: r
+
+Argument:
+1. p -> q (Premise)
+2. q -> r (Premise)
+3. p (Premise)
+4. p (3, Reiteration)
+5. q (1,4, Modus Ponens)
+6. r (2,5, Modus Ponens)
+
+Parsed Mapping:
+p: Andrew writes a popular blog about construction cranes
+q: Andrew gains recognition among crane enthusiasts
+r: Andrew secures new business opportunities
+
+Parsed Premises:
+p -> q
+q -> r
+p
+Parsed Goal:
+r
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'r' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+From 'From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.' and the implication 'q -> r', by modus ponens we deduce 'r'.
+
+---------------------
+Example 9:
+Natural Language Argument:
+If AI models are scaled to 100 billion parameters, then they will never make any mistakes.
+AI models are scaled to 100 billion parameters.
+Therefore, they will never make any mistakes.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: AI models are scaled to 100 billion parameters
+q: They will never make any mistakes
+
+Premises:
+1. p -> q
+2. p
+
+Goal: q
+
+Argument:
+1. p -> q (Given)
+2. p (Given)
+3. q (Modus Ponens from 1 and 2)
+
+Parsed Mapping:
+p: AI models are scaled to 100 billion parameters
+q: They will never make any mistakes
+
+Parsed Premises:
+p -> q
+p
+Parsed Goal:
+q
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'q' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+
+---------------------
+Example 10:
+Natural Language Argument:
+If AI size solves flubs, then every AI-generated article will be free of errors.
+AI size solves flubs.
+Therefore, every AI-generated article will be free of errors.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: AI size solves flubs
+q: Every AI-generated article will be free of errors
+
+Premises:
+1. p -> q
+2. p
+
+Goal: q
+
+Argument:
+1. p -> q (Premise)
+2. p (Premise)
+3. q (Modus Ponens, 1, 2)
+
+Parsed Mapping:
+p: AI size solves flubs
+q: Every AI-generated article will be free of errors
+
+Parsed Premises:
+p -> q
+p
+Parsed Goal:
+q
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'q' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+
+======== Processing Fallacious Examples ========
+
+---------------------
+Example 1:
+Natural Language Argument:
+If the sky is blue, then it is raining.
+It is raining.
+Therefore, the sky is blue.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: The sky is blue
+q: It is raining
+
+Premises:
+1. p -> q
+2. q
+
+Goal: p
+
+Argument:
+1. p -> q (Premise 1)
+2. q (Premise 2)
+3. q -> p (Contrapositive of premise 1)
+4. p (Modus Ponens on premises 3 and 2)
+
+Parsed Mapping:
+p: The sky is blue
+q: It is raining
+
+Parsed Premises:
+p -> q
+q
+Parsed Goal:
+p
+
+--- Running Local Prover ---
+Formal Proof Output:
+Unable to prove the goal 'p'. Known formulas: p -> q, q
+
+---------------------
+Example 2:
+Natural Language Argument:
+If it is sunny, then I wear sunglasses.
+I wear sunglasses.
+Therefore, it is sunny.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: It is sunny
+q: I wear sunglasses
+
+Premises:
+1. p -> q
+2. q
+
+Goal: p
+
+Argument:
+1. p -> q (Premise)
+2. q (Premise)
+3. q -> p (Contrapositive of premise 1)
+4. p (Modus Ponens from premises 2 and 3)
+
+Parsed Mapping:
+p: It is sunny
+q: I wear sunglasses
+
+Parsed Premises:
+p -> q
+q
+Parsed Goal:
+p
+
+--- Running Local Prover ---
+Formal Proof Output:
+Unable to prove the goal 'p'. Known formulas: p -> q, q
+
+---------------------
+Example 3:
+Natural Language Argument:
+If a student studies hard, then they pass the exam.
+John passed the exam.
+Therefore, John studied hard.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: a student studies hard
+q: they pass the exam
+
+Premises:
+1. p -> q
+2. q
+
+Goal: p
+
+Argument:
+1. p -> q (Premise)
+2. q (Premise)
+3. ~q -> ~p (Contrapositive of premise 1)
+4. ~q (Modus Tollens with premises 2 and 3)
+5. ~p (Modus Ponens with premises 1 and 4)
+6. p (Negation introduction with premise 5)
+
+Parsed Mapping:
+p: a student studies hard
+q: they pass the exam
+
+Parsed Premises:
+p -> q
+q
+Parsed Goal:
+p
+
+--- Running Local Prover ---
+Formal Proof Output:
+Unable to prove the goal 'p'. Known formulas: p -> q, q
+
+---------------------
+Example 4:
+Natural Language Argument:
+If a car is expensive, then it runs smoothly.
+This car runs smoothly.
+Therefore, the car is expensive.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: The car is expensive
+q: The car runs smoothly
+
+Premises:
+1. p -> q
+2. q
+
+Goal: p
+
+Argument:
+1. q (Given)
+2. p -> q (Given)
+3. p (Modus Ponens on premises 1 and 2)
+
+Parsed Mapping:
+p: The car is expensive
+q: The car runs smoothly
+
+Parsed Premises:
+p -> q
+q
+Parsed Goal:
+p
+
+--- Running Local Prover ---
+Formal Proof Output:
+Unable to prove the goal 'p'. Known formulas: p -> q, q
+
+---------------------
+Example 5:
+Natural Language Argument:
+If I drink coffee, then I stay awake.
+I stay awake.
+Therefore, I drank coffee.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: I drink coffee
+q: I stay awake
+
+Premises:
+1. p -> q
+2. q
+
+Goal: p
+
+Argument:
+1. p -> q (Premise 1)
+2. q (Premise 2)
+3. q -> p (Contrapositive of premise 1)
+4. p (Modus Ponens on premises 2 and 3)
+
+Parsed Mapping:
+p: I drink coffee
+q: I stay awake
+
+Parsed Premises:
+p -> q
+q
+Parsed Goal:
+p
+
+--- Running Local Prover ---
+Formal Proof Output:
+Unable to prove the goal 'p'. Known formulas: p -> q, q
+
+---------------------
+Example 6:
+Natural Language Argument:
+Consider the following:
+If a person is a good cook, then they win a cooking competition.
+Alex won the cooking competition.
+Thus, Alex is a good cook.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: a person is a good cook
+q: a person wins a cooking competition
+
+Premises:
+1. p -> q
+2. q
+
+Goal: p
+
+Argument:
+1. p -> q (Premise 1)
+2. q (Premise 2)
+3. q -> p (Contrapositive of premise 1)
+4. p (Modus Ponens using premises 2 and 3)
+
+Parsed Mapping:
+p: a person is a good cook
+q: a person wins a cooking competition
+
+Parsed Premises:
+p -> q
+q
+Parsed Goal:
+p
+
+--- Running Local Prover ---
+Formal Proof Output:
+Unable to prove the goal 'p'. Known formulas: p -> q, q
+
+======== Processing Polymarket GetRich Scheme Examples ========
+
+---------------------
+Example 1:
+Natural Language Argument:
+If the Federal Reserve raises interest rates by 25 basis points in its next meeting, then the price of Bitcoin will decline.
+The Federal Reserve raises interest rates by 25 basis points in its next meeting.
+Therefore, the price of Bitcoin will decline.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: The Federal Reserve raises interest rates by 25 basis points in its next meeting
+q: The price of Bitcoin will decline
+
+Premises:
+1. p -> q
+2. p
+
+Goal: q
+
+Argument:
+1. p -> q (Premise)
+2. p (Premise)
+3. p (2, Reiteration)
+4. q (1,3, Modus Ponens)
+
+Parsed Mapping:
+p: The Federal Reserve raises interest rates by 25 basis points in its next meeting
+q: The price of Bitcoin will decline
+
+Parsed Premises:
+p -> q
+p
+Parsed Goal:
+q
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'q' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+
+---------------------
+Example 2:
+Natural Language Argument:
+If the U.S. unemployment rate falls below 4% by the end of this year, then consumer confidence will rise.
+The U.S. unemployment rate falls below 4% by the end of this year.
+Therefore, consumer confidence will rise.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: U.S. unemployment rate falls below 4% by the end of this year
+q: Consumer confidence will rise
+
+Premises:
+1. p -> q
+2. p
+
+Goal: q
+
+Argument:
+1. p -> q (Premise 1)
+2. p (Premise 2)
+3. q (Modus Ponens, 1, 2)
+
+Parsed Mapping:
+p: U.S. unemployment rate falls below 4% by the end of this year
+q: Consumer confidence will rise
+
+Parsed Premises:
+p -> q
+p
+Parsed Goal:
+q
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'q' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+
+---------------------
+Example 3:
+Natural Language Argument:
+If Elon Musk is reinstated as CEO of Twitter by next quarter, then user engagement on Twitter will increase.
+Elon Musk is reinstated as CEO of Twitter by next quarter.
+Therefore, user engagement on Twitter will increase.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: Elon Musk is reinstated as CEO of Twitter by next quarter
+q: User engagement on Twitter will increase
+
+Premises:
+1. p -> q
+2. p
+
+Goal: q
+
+Argument:
+1. p -> q (Premise)
+2. p (Premise)
+3. q (Modus Ponens, 1, 2)
+
+Parsed Mapping:
+p: Elon Musk is reinstated as CEO of Twitter by next quarter
+q: User engagement on Twitter will increase
+
+Parsed Premises:
+p -> q
+p
+Parsed Goal:
+q
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'q' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+
+---------------------
+Example 4:
+Natural Language Argument:
+If Bitcoin exceeds $30,000 by mid-year, then institutional investment in cryptocurrencies will surge.
+Bitcoin exceeds $30,000 by mid-year.
+Therefore, institutional investment in cryptocurrencies will surge.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: Bitcoin exceeds $30,000 by mid-year
+q: Institutional investment in cryptocurrencies will surge
+
+Premises:
+1. p -> q
+2. p
+
+Goal: q
+
+Argument:
+1. p -> q (Premise)
+2. p (Premise)
+3. q (Modus Ponens, 1, 2)
+
+Parsed Mapping:
+p: Bitcoin exceeds $30,000 by mid-year
+q: Institutional investment in cryptocurrencies will surge
+
+Parsed Premises:
+p -> q
+p
+Parsed Goal:
+q
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'q' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+
+---------------------
+Example 5:
+Natural Language Argument:
+If the U.S. government passes a new infrastructure bill by year-end, then construction spending will increase.
+The U.S. government passes a new infrastructure bill by year-end.
+Therefore, construction spending will increase.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: The U.S. government passes a new infrastructure bill by year-end
+q: Construction spending will increase
+
+Premises:
+1. p -> q
+2. p
+
+Goal: q
+
+Argument:
+1. p -> q (Premise 1)
+2. p (Premise 2)
+3. q (Modus Ponens, 1, 2)
+
+Parsed Mapping:
+p: The U.S. government passes a new infrastructure bill by year-end
+q: Construction spending will increase
+
+Parsed Premises:
+p -> q
+p
+Parsed Goal:
+q
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'q' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+
+---------------------
+Example 6:
+Natural Language Argument:
+If a major renewable energy breakthrough is announced by a leading company, then the stock prices of renewable energy firms will rise.
+A major renewable energy breakthrough is announced by a leading company.
+Therefore, the stock prices of renewable energy firms will rise.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: A major renewable energy breakthrough is announced by a leading company
+q: The stock prices of renewable energy firms will rise
+
+Premises:
+1. p -> q
+2. p
+
+Goal: q
+
+Argument:
+1. p -> q (Premise)
+2. p (Premise)
+3. q (Modus Ponens, 1, 2)
+
+Parsed Mapping:
+p: A major renewable energy breakthrough is announced by a leading company
+q: The stock prices of renewable energy firms will rise
+
+Parsed Premises:
+p -> q
+p
+Parsed Goal:
+q
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'q' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+
+---------------------
+Example 7:
+Natural Language Argument:
+If Elon Musk announces a new cryptocurrency project, then Bitcoin will surge to $100,000.
+Elon Musk announces a new cryptocurrency project.
+Therefore, Bitcoin will surge to $100,000.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: Elon Musk announces a new cryptocurrency project
+q: Bitcoin will surge to $100,000
+
+Premises:
+1. p -> q
+2. p
+
+Goal: q
+
+Argument:
+p -> q      (Premise 1)
+p          (Premise 2)
+∴ q         (Modus Ponens)
+
+Parsed Mapping:
+p: Elon Musk announces a new cryptocurrency project
+q: Bitcoin will surge to $100,000
+
+Parsed Premises:
+p -> q
+p
+Parsed Goal:
+q
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'q' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+
+---------------------
+Example 8:
+Natural Language Argument:
+If a major tech company acquires a blockchain startup, then the stock market will rally overnight.
+A major tech company acquires a blockchain startup.
+Therefore, the stock market will rally overnight.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: a major tech company acquires a blockchain startup
+q: the stock market will rally overnight
+
+Premises:
+1. p -> q
+2. p
+
+Goal: q
+
+Argument:
+1. p -> q (Premise 1)
+2. p (Premise 2)
+3. q (Modus Ponens from 1 and 2)
+
+Parsed Mapping:
+p: a major tech company acquires a blockchain startup
+q: the stock market will rally overnight
+
+Parsed Premises:
+p -> q
+p
+Parsed Goal:
+q
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'q' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+
+---------------------
+Example 9:
+Natural Language Argument:
+If Durham becomes the new hub for cryptocurrency mining, then local investors will get rich quickly.
+Durham becomes the new hub for cryptocurrency mining.
+Therefore, local investors will get rich quickly.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: Durham becomes the new hub for cryptocurrency mining
+q: Local investors will get rich quickly
+
+Premises:
+1. p -> q
+2. p
+
+Goal: q
+
+Argument:
+1. p -> q (Premise)
+2. p (Premise)
+3. q (Modus Ponens, 1, 2)
+
+Parsed Mapping:
+p: Durham becomes the new hub for cryptocurrency mining
+q: Local investors will get rich quickly
+
+Parsed Premises:
+p -> q
+p
+Parsed Goal:
+q
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'q' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+
+---------------------
+Example 10:
+Natural Language Argument:
+If construction crane manufacturers integrate blockchain for supply chain management, then their stocks will skyrocket.
+Construction crane manufacturers integrate blockchain for supply chain management.
+Therefore, their stocks will skyrocket.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: Construction crane manufacturers integrate blockchain for supply chain management
+q: Their stocks will skyrocket
+
+Premises:
+1. p -> q
+2. p
+
+Goal: q
+
+Argument:
+1. p -> q (Premise)
+2. p (Premise)
+3. q (Modus Ponens, 1, 2)
+
+Parsed Mapping:
+p: Construction crane manufacturers integrate blockchain for supply chain management
+q: Their stocks will skyrocket
+
+Parsed Premises:
+p -> q
+p
+Parsed Goal:
+q
+
+--- Running Local Prover ---
+Formal Proof Output:
+Goal 'q' was proven.
+Proof steps:
+From 'Premise: p' and the implication 'p -> q', by modus ponens we deduce 'q'.
+
+---------------------
+Example 11:
+Natural Language Argument:
+If Polymarket sees a surge in speculative bets on future tech, then the overall market will crash, allowing for a bargain buy.
+Polymarket sees a surge in speculative bets on future tech.
+Therefore, the overall market will crash, allowing for a bargain buy.
+
+--- Converting to Propositional Logic via ChatGPT ---
+ChatGPT Logic Conversion:
+Mapping:
+p: Polymarket sees a surge in speculative bets on future tech
+q: The overall market will crash
+r: Allowing for a bargain buy
+
+Premises:
+1. p -> (q -> r)
+2. p
+
+Goal: q
+
+Argument:
+1. p -> (q -> r)   [Given]
+2. p               [Given]
+3. q -> r          [1, 2, Modus Ponens]
+4. q               [3, 2, Modus Ponens]
+
+Parsed Mapping:
+p: Polymarket sees a surge in speculative bets on future tech
+q: The overall market will crash
+r: Allowing for a bargain buy
+
+Parsed Premises:
+p -> (q -> r)
+p
+Parsed Goal:
+q
+
+--- Running Local Prover ---
+Formal Proof Output:
+Unable to prove the goal 'q'. Known formulas: p -> q -> r, p, q -> r

@@ -1,0 +1,24 @@
+If the sky is blue, then it is raining.
+It is raining.
+Therefore, the sky is blue.
+
+If it is sunny, then I wear sunglasses.
+I wear sunglasses.
+Therefore, it is sunny.
+
+If a student studies hard, then they pass the exam.
+John passed the exam.
+Therefore, John studied hard.
+
+If a car is expensive, then it runs smoothly.
+This car runs smoothly.
+Therefore, the car is expensive.
+
+If I drink coffee, then I stay awake.
+I stay awake.
+Therefore, I drank coffee.
+
+Consider the following:
+If a person is a good cook, then they win a cooking competition.
+Alex won the cooking competition.
+Thus, Alex is a good cook.

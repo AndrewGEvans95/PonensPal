@@ -3,7 +3,6 @@ import re
 from collections import deque
 import os
 
-
 from openai import OpenAI
 client = OpenAI(api_key="")  # Replace with your API key
 
@@ -40,6 +39,7 @@ class Imp(Formula):
 class Not(Formula):
     def __init__(self, operand):
         self.operand = operand  # Formula
+    
     def __str__(self):
         return "~" + str(self.operand)
 
@@ -151,7 +151,7 @@ def convert_to_logic(natural_language):
     Goal: [Formula]
 
     Argument:
-    [The formal derivation, if any]
+    [The formal derivation, if applicable]
 
     Argument:
     [The natural language argument]
@@ -161,6 +161,7 @@ def convert_to_logic(natural_language):
         "Assign propositional variables as needed and provide a mapping of each variable to its original meaning. "
         "Ensure that ALL premises (including given facts) are included in the 'Premises:' section. "
         "All negations should be represented with '~'. "
+        "Use ASCII symbols for logical operators (e.g., '->' for implication). "
         "Output ONLY in the exact format below with no additional text:\n\n"
         "Mapping:\n"
         "p: [Meaning of p]\n"
@@ -209,100 +210,126 @@ def translate_proof(formal_proof, mapping):
     return explanation
 
 # -----------------------------------------------------------------
-# 3. Main Pipeline: Integrating ChatGPT with the Local Prover
+# 3. File Input and Main Pipeline
 # -----------------------------------------------------------------
 
-def main():
-    # Example natural language argument.
-    natural_argument = (
-        "If it is raining, then the ground is wet. "
-        "If the ground is wet, then the roads are not slippery. "
-        "It is raining. Therefore, the roads are slippery."
-    )
-    natural_argument = (
-        "If Socrates is a man, then Socrates is mortal."
-        "Soctrates is a man."
-        "Therefore, Socrates is mortal."
-    )
-    natural_argument = (
-        "If a company invests heavily in research and development, then it will generate innovative products."
-        "If a company generates innovative products, then it will increase its market share."
-        "The company is investing heavily in research and development."
-    )
-    natural_argument = (
-        "If a function is continuous on the closed interval [a, b] and differentiable on the open interval (a, b), then there is at least one point c between a and b where the instantaneous rate of change (the derivative) is equal to the average rate of change over the interval (that is, f'(c) equals [f(b) - f(a)] divided by [b - a])."
-        "The function f is indeed continuous on [a, b] and differentiable on (a, b)."
-        "Therefore, there must be a point c in (a, b) where f'(c) equals [f(b) - f(a)] / (b - a)."
-    )
-    print("Natural Language Argument:")
-    print(natural_argument)
-    
-    print("\n--- Converting to Propositional Logic via ChatGPT ---")
-    logic_conversion = convert_to_logic(natural_argument)
-    print("ChatGPT Logic Conversion:")
-    print(logic_conversion)
-    
-    # Parse the ChatGPT output.
-    mapping = {}
-    premise_lines = []
-    goal_line = None
-    
-    lines = logic_conversion.splitlines()
-    lines = [line.strip() for line in lines if line.strip() != ""]
-    
-    section = None
-    for line in lines:
-        if line.startswith("Mapping:"):
-            section = "mapping"
-            continue
-        elif line.startswith("Premises:"):
-            section = "premises"
-            continue
-        elif line.startswith("Goal:"):
-            section = "goal"
-            content = line[len("Goal:"):].strip()
-            if content:
-                goal_line = content
-            continue
-        # We ignore the "Argument:" section for local proof.
-        
-        if section == "mapping":
-            if ":" in line:
-                var, meaning = line.split(":", 1)
-                mapping[var.strip()] = meaning.strip()
-        elif section == "premises":
-            if re.match(r"^\d+\.", line):
-                parts = line.split('.', 1)
-                if len(parts) > 1:
-                    premise_lines.append(parts[1].strip())
-            else:
-                premise_lines.append(line)
-        elif section == "goal":
-            if not goal_line:
-                goal_line = line.strip()
-    
-    if not goal_line or not premise_lines or not mapping:
-        print("Error: Unable to parse ChatGPT output. Please check the format.")
-        return
+def read_examples_from_file(file_path):
+    """
+    Reads natural language arguments from a text file.
+    Each example should be separated by one or more blank lines.
+    """
+    try:
+        with open(file_path, "r") as f:
+            content = f.read()
+            # Split on two or more newlines to separate examples.
+            examples = [ex.strip() for ex in content.split("\n\n") if ex.strip()]
+        return examples
+    except Exception as e:
+        print(f"Error reading file {file_path}: {e}")
+        return []
 
-    print("\nParsed Mapping:")
-    for var, meaning in mapping.items():
-        print(f"{var}: {meaning}")
-    print("\nParsed Premises:")
-    for p in premise_lines:
-        print(p)
-    print("Parsed Goal:")
-    print(goal_line)
+def process_examples(file_label, examples):
+    """
+    Processes a list of natural language arguments.
+    """
+    print(f"\n======== Processing {file_label} Examples ========")
+    for idx, natural_argument in enumerate(examples, start=1):
+        print(f"\n---------------------\nExample {idx}:")
+        print("Natural Language Argument:")
+        print(natural_argument)
+        
+        print("\n--- Converting to Propositional Logic via ChatGPT ---")
+        logic_conversion = convert_to_logic(natural_argument)
+        print("ChatGPT Logic Conversion:")
+        print(logic_conversion)
+        
+        # Parse the ChatGPT output.
+        mapping = {}
+        premise_lines = []
+        goal_line = None
+        
+        lines = logic_conversion.splitlines()
+        lines = [line.strip() for line in lines if line.strip() != ""]
+        
+        section = None
+        for line in lines:
+            if line.startswith("Mapping:"):
+                section = "mapping"
+                continue
+            elif line.startswith("Premises:"):
+                section = "premises"
+                continue
+            elif line.startswith("Goal:"):
+                section = "goal"
+                content = line[len("Goal:"):].strip()
+                if content:
+                    goal_line = content
+                continue
+            # We ignore the "Argument:" sections.
+            
+            if section == "mapping":
+                if ":" in line:
+                    var, meaning = line.split(":", 1)
+                    mapping[var.strip()] = meaning.strip()
+            elif section == "premises":
+                if re.match(r"^\d+\.", line):
+                    parts = line.split('.', 1)
+                    if len(parts) > 1:
+                        premise_lines.append(parts[1].strip())
+                else:
+                    premise_lines.append(line)
+            elif section == "goal":
+                if not goal_line:
+                    goal_line = line.strip()
+        
+        if not goal_line or not premise_lines or not mapping:
+            print("Error: Unable to parse ChatGPT output. Please check the format.")
+            continue
+
+        print("\nParsed Mapping:")
+        for var, meaning in mapping.items():
+            print(f"{var}: {meaning}")
+        print("\nParsed Premises:")
+        for p in premise_lines:
+            print(p)
+        print("Parsed Goal:")
+        print(goal_line)
+        
+        print("\n--- Running Local Prover ---")
+        formal_proof = prove(goal_line, premise_lines)
+        print("Formal Proof Output:")
+        print(formal_proof)
+        
+        # Optionally, you can uncomment the following lines to translate the formal proof to natural language.
+        # print("\n--- Translating Formal Proof to Natural Language Explanation ---")
+        # nl_explanation = translate_proof(formal_proof, mapping)
+        # print("Natural Language Explanation:")
+        # print(nl_explanation)
+
+def main():
+    # Files with examples.
+    valid_file = "examples.txt"
+    fallacious_file = "fallacious_examples.txt"
+    polymarket_file = "polymarket_getrich_scheme.txt"
     
-    print("\n--- Running Local Prover ---")
-    formal_proof = prove(goal_line, premise_lines)
-    print("Formal Proof Output:")
-    print(formal_proof)
+    valid_examples = read_examples_from_file(valid_file)
+    fallacious_examples = read_examples_from_file(fallacious_file)
+    polymarket_examples = read_examples_from_file(polymarket_file)
     
-    #print("\n--- Translating Formal Proof to Natural Language Explanation ---")
-    #nl_explanation = translate_proof(formal_proof, mapping)
-    #print("Natural Language Explanation:")
-    #print(nl_explanation)
+    if not valid_examples:
+        print(f"No valid examples found in {valid_file}. Please add examples to the file.")
+    else:
+        process_examples("Valid", valid_examples)
+    
+    if not fallacious_examples:
+        print(f"No fallacious examples found in {fallacious_file}. Please add examples to the file.")
+    else:
+        process_examples("Fallacious", fallacious_examples)
+    
+    if not polymarket_examples:
+        print(f"No Polymarket GetRich Scheme examples found in {polymarket_file}. Please add examples to the file.")
+    else:
+        process_examples("Polymarket GetRich Scheme", polymarket_examples)
 
 if __name__ == "__main__":
     main()

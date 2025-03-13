@@ -1,0 +1,46 @@
+If Andrew is a resident of Durham, NC, then Andrew enjoys the vibrant local culture.
+Andrew is a resident of Durham, NC.
+Therefore, Andrew enjoys the vibrant local culture.
+
+If it is raining in Durham, then the streets become wet.
+If the streets become wet, then the roads are slippery.
+It is raining in Durham.
+Therefore, the roads are slippery.
+
+If a student studies diligently, then they pass their exams.
+If a student passes their exams, then they graduate.
+Andrew studies diligently.
+Therefore, Andrew graduates.
+
+If a person exercises regularly, then they maintain good health.
+If a person maintains good health, then they have more energy.
+Andrew exercises regularly.
+Therefore, Andrew has more energy.
+
+If a construction crane is well-maintained, then it operates efficiently.
+If a construction crane operates efficiently, then construction projects run smoothly.
+A construction crane is well-maintained.
+Therefore, construction projects run smoothly.
+
+If Andrew and his friend Alex K. work together on a project, then the project benefits from their combined expertise.
+If the project benefits from their combined expertise, then it is successful.
+Andrew and Alex K. work together on a project.
+Therefore, the project is successful.
+
+If Durham invests in innovative construction technologies, then the local construction industry advances.
+If the local construction industry advances, then job opportunities increase.
+Durham invests in innovative construction technologies.
+Therefore, job opportunities increase.
+
+If Andrew writes a popular blog about construction cranes, then he gains recognition among crane enthusiasts.
+If he gains recognition, then he secures new business opportunities.
+Andrew writes a popular blog about construction cranes.
+Therefore, he secures new business opportunities.
+
+If AI models are scaled to 100 billion parameters, then they will never make any mistakes.
+AI models are scaled to 100 billion parameters.
+Therefore, they will never make any mistakes.
+
+If AI size solves flubs, then every AI-generated article will be free of errors.
+AI size solves flubs.
+Therefore, every AI-generated article will be free of errors.
