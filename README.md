@@ -13,22 +13,6 @@ Addtional notes: Create an llm from scratch where entire training set is missing
 
 ---
 
-## 📖 Table of Contents
-
-- [Overview](#overview)
-- [Project Structure](#project-structure)
-- [Dependencies](#dependencies)
-- [Setup](#setup)
-- [Code Explanation](#code-explanation)
-  - [Logical Interpreter](#logical-interpreter)
-  - [ChatGPT Integration](#chatgpt-integration)
-  - [Main Pipeline](#main-pipeline)
-- [Usage](#usage)
-- [Notes & Limitations](#notes-and-limitations)
-- [License](#license)
-
----
-
 ## Overview
 
 PonensPal is designed to showcase how easy it can be to reason logically using:
@@ -62,7 +46,7 @@ pip install openai
 
 ---
 
-## ⚙️ Setup
+## Setup
 
 1. **OpenAI API Key**:
 
@@ -110,9 +94,9 @@ python your_script_name.py
 
 ### Main Pipeline
 
-- **Natural argument ➡️ Formal logic** (ChatGPT)
-- **Formal logic ➡️ Proof** (Local prover)
-- **Proof ➡️ Natural language explanation** (optional)
+- **Natural argument ➡ Formal logic** (ChatGPT)
+- **Formal logic ➡ Proof** (Local prover)
+- **Proof ➡ Natural language explanation** (optional) wip
 
 ---
 
@@ -131,7 +115,6 @@ python your_script_name.py
 
 ##  Notes and Limitations
 
-- Ensure your OpenAI API key is managed securely.
 - The local prover only uses simple forward chaining and does not handle complex proofs.
 - ChatGPT responses must follow the exact format to be parsed correctly.
 
